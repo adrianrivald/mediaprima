@@ -220,6 +220,7 @@ const App = () => {
           Supplier Management
         </Header>
         {selectedItemCode === "" ? (
+          // Konten list supplier
           <SupplierList
             showModal={showModal}
             columns={columns}
@@ -229,6 +230,7 @@ const App = () => {
             handleCancel={handleCancel}
           />
         ) : (
+          // Konten detail supplier
           <SupplierDetail
             showModal={showModal}
             columns={columns}
