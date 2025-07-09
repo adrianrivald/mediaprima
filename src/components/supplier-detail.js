@@ -1,10 +1,11 @@
 import React from "react";
-import { Layout, Table, Button, Select, Tag, Checkbox } from "antd";
+import { Layout, Table, Button, Select, Tag, Checkbox, Row } from "antd";
 import {
   UserOutlined,
   ArrowLeftOutlined,
   ArrowRightOutlined,
 } from "@ant-design/icons";
+import { useRouter } from "next/router";
 
 const { Content } = Layout;
 const { Option } = Select;
@@ -34,8 +35,23 @@ const outstandingData = [
   },
 ];
 export function SupplierDetail() {
+  const router = useRouter();
+  const onBack = () => {
+    router.push(router.pathname);
+  };
   return (
     <Content style={{ margin: "16px" }}>
+      <Row
+        style={{
+          padding: "16px",
+          fontSize: 20,
+          cursor: "pointer",
+        }}
+        onClick={onBack}
+      >
+        <ArrowLeftOutlined />
+        <span style={{ marginLeft: 12, fontSize: 20 }}>Back</span>
+      </Row>
       <div
         style={{
           background: "#f8f8f8",

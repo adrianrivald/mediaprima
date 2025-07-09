@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Layout,
   Menu,
@@ -28,6 +28,7 @@ import {
 } from "@ant-design/icons";
 import { SupplierList } from "@/components/supplier-list";
 import { SupplierDetail } from "@/components/supplier-detail";
+import { useRouter } from "next/router";
 
 const { Header, Content, Sider } = Layout;
 const { Option } = Select;
@@ -107,6 +108,7 @@ const columns = (onClickItem) => {
 };
 
 const App = () => {
+  const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedItemCode, setSelectedItemCode] = useState("");
@@ -116,7 +118,18 @@ const App = () => {
 
   const onClickItem = (itemCode) => {
     setSelectedItemCode(itemCode);
+    router.push({
+      query: {
+        item: itemCode,
+      },
+    });
   };
+
+  useEffect(() => {
+    if (!router.query.item) {
+      setSelectedItemCode("");
+    }
+  }, [router]);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
