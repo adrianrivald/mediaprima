@@ -40,3 +40,9 @@ a {
     color-scheme: dark;
   }
 }
+
+/* Custom css */
+.ant-layout-sider-trigger {
+  background-color: white !important;
+  color: black !important; /* Optional: change the icon color */
+}
